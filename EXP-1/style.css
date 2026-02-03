@@ -1,0 +1,26 @@
+body {
+    background: linear-gradient(to bottom,white, black);
+}
+
+ul {
+    color: rgb(33, 15, 234);
+}
+
+h2 {
+    text-align: center;
+}
+
+.text {
+    color: white;
+    text-align: center;
+    background-color: black
+}
+
+img {
+    border-color: black;
+    border-width: 5px;
+}
+
+.n {
+    display: inline-block;
+}
