@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<script>
+if(!localStorage.getItem("user")) location="login.html";
+</script>
+
+<h2>Dashboard</h2>
+
+<canvas id="chart"></canvas>
+
+<input id="amount" placeholder="Amount">
+<select id="type">
+<option value="expense">Expense</option>
+<option value="income">Income</option>
+</select>
+<button onclick="add()">Add</button>
+
+<script>
+let chart;
+
+async function load(){
+ const res = await fetch("http://localhost:5000/api/expenses");
+ const data = await res.json();
+
+ const labels = data.map(d=> new Date(d.date).toLocaleDateString());
+ const values = data.map(d=> d.amount);
+
+ if(chart) chart.destroy();
+
+ chart = new Chart(document.getElementById("chart"),{
+  type:"line",
+  data:{
+   labels,
+   datasets:[{label:"Finance", data:values}]
+  }
+ });
+}
+
+async function add(){
+ await fetch("http://localhost:5000/api/expenses",{
+  method:"POST",
+  headers:{"Content-Type":"application/json"},
+  body:JSON.stringify({
+    amount:amount.value,
+    type:type.value
+  })
+ });
+
+ load();
+}
+
+load();
+</script>
+</body>
+</html>
