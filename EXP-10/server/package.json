@@ -1,0 +1,22 @@
+{
+  "name": "finance-tracker-server",
+  "version": "1.0.0",
+  "description": "Backend for Finance Tracker",
+  "main": "server.js",
+  "scripts": {
+    "dev": "nodemon server.js",
+    "start": "node server.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.6.1",
+    "express": "^4.19.2",
+    "mongoose": "^8.23.1"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.4"
+  }
+}
